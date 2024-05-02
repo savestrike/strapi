@@ -3,7 +3,7 @@ import engines from './engines';
 
 type OptsScope = Pick<
   Scope,
-  'strapiDependencies' | 'additionalsDependencies' | 'strapiVersion' | 'uuid' | 'packageJsonStrapi'
+  'devDependencies' | 'dependencies' | 'strapiVersion' | 'uuid' | 'packageJsonStrapi'
 >;
 
 interface Opts extends OptsScope {
@@ -11,14 +11,7 @@ interface Opts extends OptsScope {
 }
 
 export default (opts: Opts) => {
-  const {
-    strapiDependencies,
-    additionalsDependencies,
-    strapiVersion,
-    projectName,
-    uuid,
-    packageJsonStrapi,
-  } = opts;
+  const { dependencies, devDependencies, projectName, uuid, packageJsonStrapi } = opts;
 
   // Finally, return the JSON.
   return {
@@ -32,14 +25,8 @@ export default (opts: Opts) => {
       build: 'strapi build',
       strapi: 'strapi',
     },
-    devDependencies: {},
-    dependencies: {
-      ...strapiDependencies.reduce<Record<string, string>>((acc, key) => {
-        acc[key] = strapiVersion;
-        return acc;
-      }, {}),
-      ...additionalsDependencies,
-    },
+    devDependencies,
+    dependencies,
     author: {
       name: 'A Strapi developer',
     },

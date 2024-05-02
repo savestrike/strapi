@@ -31,7 +31,6 @@ program
   .version(packageJson.version)
   .arguments('[directory], [starter]')
   .option('--use-npm', 'Force usage of npm instead of yarn to create the project')
-  .option('--debug', 'Display database connection error')
   .option('--quickstart', 'Quickstart app creation')
   .option('--dbclient <dbclient>', 'Database client')
   .option('--dbhost <dbhost>', 'Database host')
@@ -41,7 +40,6 @@ program
   .option('--dbpassword <dbpassword>', 'Database password')
   .option('--dbssl <dbssl>', 'Database SSL')
   .option('--dbfile <dbfile>', 'Database file path for sqlite')
-  .option('--dbforce', 'Overwrite database content if any')
   .description(
     'Create a fullstack monorepo application using the strapi backend template specified in the provided starter'
   )

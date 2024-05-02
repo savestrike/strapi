@@ -63,11 +63,11 @@ const getProperties = (scope: Scope, error?: TrackError) => {
   const groupProperties = {
     version: scope.strapiVersion,
     docker: scope.docker,
-    useYarn: scope.useYarn,
+    // useYarn: scope.useYarn,
     useTypescriptOnServer: scope.useTypescript,
     useTypescriptOnAdmin: scope.useTypescript,
     isHostedOnStrapiCloud: process.env.STRAPI_HOSTING === 'strapi.cloud',
-    noRun: (scope.runQuickstartApp !== true).toString(),
+    noRun: (scope.runApp !== true).toString(),
     projectId: scope.uuid,
   };
 

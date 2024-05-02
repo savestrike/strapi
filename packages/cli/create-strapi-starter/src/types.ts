@@ -19,6 +19,5 @@ export interface Program {
   dbpassword?: string;
   dbssl?: string;
   dbfile?: string;
-  dbforce?: boolean;
   template?: string;
 }

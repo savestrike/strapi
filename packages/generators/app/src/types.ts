@@ -1,36 +1,42 @@
+import type { PackageManager } from './utils/package-manager';
+
 export interface Scope {
   name?: string;
   rootPath: string;
   template?: string;
   strapiVersion: string;
-  strapiDependencies: Array<string>;
   installDependencies?: boolean;
-  additionalsDependencies: Record<string, string>;
+  devDependencies: Record<string, string>;
+  dependencies: Record<string, string>;
   docker: boolean;
-  useYarn: boolean;
-  useTypescript: boolean;
-  runQuickstartApp: boolean;
+  packageManager: PackageManager;
+  runApp: boolean;
   quick?: boolean;
   uuid?: string;
   deviceId?: string;
-  dbforce?: boolean;
   database?: DatabaseInfo;
-  debug?: boolean;
   tmpPath: string;
   packageJsonStrapi: Record<string, unknown>;
+  useTypescript: boolean;
 }
 
 export interface NewOptions {
+  directory: string;
+
   useNpm: boolean;
+  useYarn: boolean;
+  usePnpm: boolean;
+
   run: boolean;
-  debug: boolean;
   quickstart: boolean;
   template: string;
   starter: string;
+
   typescript: boolean;
-  dbforce: boolean;
+  javascript: boolean;
+
   dbssl: string;
-  dbclient: string;
+  dbclient: ClientName;
   dbhost: string;
   dbport: string;
   dbname: string;
@@ -39,16 +45,10 @@ export interface NewOptions {
   dbfile: string;
 }
 
-export interface Configuration {
-  client: string;
-  connection: DatabaseInfo;
-  dependencies: Record<string, string>;
-}
-
 export type ClientName = 'mysql' | 'postgres' | 'sqlite';
 
 export interface DatabaseInfo {
-  client?: string;
+  client?: ClientName;
   connection: {
     host?: string;
     port?: string;

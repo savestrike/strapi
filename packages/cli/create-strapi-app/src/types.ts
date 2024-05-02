@@ -3,7 +3,7 @@ export interface Program {
   useNpm?: boolean;
   debug?: boolean;
   quickstart?: boolean;
-  dbclient?: string;
+  dbclient?: 'mysql' | 'postgres' | 'sqlite';
   dbhost?: string;
   dbport?: string;
   dbname?: string;
@@ -11,7 +11,6 @@ export interface Program {
   dbpassword?: string;
   dbssl?: string;
   dbfile?: string;
-  dbforce?: boolean;
   template?: string;
   typescript?: boolean;
 }
