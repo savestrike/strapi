@@ -28,7 +28,6 @@ const createTransferToken = async (page, tokenName, duration, type) => {
 test.describe('Transfer Tokens', () => {
   test.beforeEach(async ({ page }) => {
     await resetDatabaseAndImportDataFromPath('with-admin.tar');
-    await page.goto('/admin');
     await login({ page });
   });
 

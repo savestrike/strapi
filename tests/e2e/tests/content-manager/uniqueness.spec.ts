@@ -15,7 +15,6 @@ test.describe('Uniqueness', () => {
     // Reset the DB and also specify that we are wiping all entries of the unique content type each time
     await resetDatabaseAndImportDataFromPath('with-admin.tar');
 
-    await page.goto('/admin');
     await login({ page });
 
     await page.getByRole('link', { name: 'Content Manager' }).click();

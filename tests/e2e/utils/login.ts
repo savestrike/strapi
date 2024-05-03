@@ -5,6 +5,8 @@ import { ADMIN_EMAIL_ADDRESS, ADMIN_PASSWORD } from '../constants';
  * Log in to an e2e test app
  */
 export const login = async ({ page, rememberMe = false }: { page: Page; rememberMe?: boolean }) => {
+  await page.context().clearCookies();
+  await page.goto('/admin', { waitUntil: 'networkidle' });
   await page.getByLabel('Email').fill(ADMIN_EMAIL_ADDRESS);
   await page
     .getByLabel('Password*', {
@@ -17,4 +19,5 @@ export const login = async ({ page, rememberMe = false }: { page: Page; remember
   }
 
   await page.getByRole('button', { name: 'Login' }).click();
+  await page.waitForLoadState('networkidle');
 };

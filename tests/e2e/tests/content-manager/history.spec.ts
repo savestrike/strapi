@@ -20,7 +20,6 @@ describeOnCondition(edition === 'EE')('History', () => {
     test.beforeEach(async ({ page }) => {
       await resetDatabaseAndImportDataFromPath('with-admin.tar');
       await resetFiles();
-      await page.goto('/admin');
       await login({ page });
     });
 

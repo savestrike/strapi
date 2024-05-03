@@ -7,7 +7,6 @@ import { login } from '../../utils/login';
 test.describe('Login', () => {
   test.beforeEach(async ({ page }) => {
     await resetDatabaseAndImportDataFromPath('with-admin.tar');
-    await page.goto('/admin');
   });
 
   test.describe('Successful login', () => {

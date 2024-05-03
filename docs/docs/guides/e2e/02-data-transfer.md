@@ -80,7 +80,7 @@ import { resetDatabaseAndImportDataFromPath } from './utils/dts-import';
 test.describe('Strapi Application', () => {
   test.beforeEach(async ({ page }) => {
     await resetDatabaseAndImportDataFromPath('backup.tar');
-    await page.goto('/admin');
+    await login(page); // log in as admin user
   });
 
   test('a user should be able to...', async ({ page }) => {
