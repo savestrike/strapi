@@ -83,12 +83,12 @@ describe('WorkflowAttributes', () => {
 
     const { getByRole, user, queryByRole } = setup();
 
-    const contentTypesSelect = getByRole('combobox', { name: /associated to/i });
-    await user.click(contentTypesSelect);
+    await user.click(getByRole('combobox', { name: 'Associated to' }));
 
     await waitFor(async () => {
       expect(queryByRole('option', { name: /Collection Types/i })).not.toBeInTheDocument();
     });
+
     await waitFor(() => {
       expect(getByRole('option', { name: /Single Types/i })).toBeInTheDocument();
     });
